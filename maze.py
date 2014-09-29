@@ -21,6 +21,12 @@ maze0 = [
     ['1100', '1001', '0100', '0101', '1001', '0100', '1101', '1001', '1000', '1000', '1100', '0101', '1001', '1000']
     ]
 
+def rules_str(node):
+    state = node.state
+    square_str = maze0[state[0],state[1]]
+    return square_str
+rules = []
+rules.append({"pre": lambda(n):rules_str(n)[0],"act":#return the node above it. Or something.
 # ....
 # ....
 # .... The following main program runs all 5 searchs using the new versions in search.py
