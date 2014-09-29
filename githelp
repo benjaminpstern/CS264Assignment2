@@ -1,0 +1,16 @@
+to add files to your commit:
+git add filenames
+
+to commit things:
+git commit filenames
+git commit -a
+
+to push:
+git push origin master
+
+to pull:
+git pull origin master
+
+before you push, you must commit stuff. Before you commit, you must add
+before you push, you have to pull if there are new changes
+(git will tell you about this)
