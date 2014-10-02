@@ -1,6 +1,7 @@
 # CS364 Assignment 2.1
 
 from search import *
+from math import fabs
 
 # Representation of the maze based on cell configuration
 
@@ -22,11 +23,25 @@ maze0 = [
     ]
 
 def rules_str(node):
-    state = node.state
-    square_str = maze0[state[0],state[1]]
+    square_str = maze0[node[1]][node[0]]
     return square_str
 rules = []
-rules.append({"pre": lambda(n):rules_str(n)[0],"act":#return the node above it. Or something.
+rules.append({"pre": lambda n:rules_str(n)[0] == '1',"act": lambda n:(n[0], n[1]-1)})
+rules.append({"pre": lambda n:rules_str(n)[1] == '1',"act": lambda n:(n[0]+1, n[1])})
+rules.append({"pre": lambda n:rules_str(n)[2] == '1',"act": lambda n:(n[0], n[1]+1)})
+rules.append({"pre": lambda n:rules_str(n)[3] == '1',"act": lambda n:(n[0]-1, n[1])})
+
+goal = lambda n: n == (6,7)
+
+legal = lambda n: True
+
+root = Node((6,0), rules, legal)
+
+x = lambda n:1
+
+h = lambda n: abs(n[0]-6) + abs(n[1] - 7)
+
+
 # ....
 # ....
 # .... The following main program runs all 5 searchs using the new versions in search.py
