@@ -1,4 +1,5 @@
 # CS364 Assignment 2.1
+# Cole Peppis and Ben Stern
 
 from search import *
 from math import fabs
@@ -47,11 +48,11 @@ h = lambda n: abs(n[0]-6) + abs(n[1] - 7)
 # .... The following main program runs all 5 searchs using the new versions in search.py
 
 if __name__ == '__main__':
-    print("CS364, Assignment 2, Ima Student, Ura Student")
-    print('1a: ', depth(root, goal, silent=True))
-    print('1b: ', hill(root, goal, h, silent=True))
-    print('1c: ', steep(root, goal, h, silent=True))
-    print('1d: ', best(root, goal, h, silent=True))
-    print('1e: ', algAM(root, goal, h, silent=True))
+    print("CS364, Assignment 2, Ben Stern, Cole Peppis")
+    print('1a   i: Depth-First:     ', depth(root, goal, silent=True))
+    print('1a  ii: Hill-Climbing:   ', hill(root, goal, h, silent=True))
+    print('1a iii: Steepest-Ascent: ', steep(root, goal, h, silent=True))
+    print('1a  iv: Best-First:      ', best(root, goal, h, silent=True))
+    print('1a   v: Algorithm A:     ', algAM(root, goal, h, silent=True))
 
 

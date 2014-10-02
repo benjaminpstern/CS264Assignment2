@@ -1,0 +1,9 @@
+CS364 Assignment 2
+Cole Peppis and Ben Stern
+
+Problem 1b:
+	Unsurprisingly, the Depth-First algorithm finds a path, but it isn't the shortest and it takes a fairly long time to find it.
+	The Hill-Climbing algorithm doesn't do anything, as expected, because both squares adjacent to the start square are further from the goal according to our manhattan distance H function.
+	The Steepest Ascent Hill Climbing algorithm finds a path faster than Depth-First, but it isn't the shortest one, which makes sense since it's basically Depth-First, but it looks at the nodes in a slightly more informed order.
+	The Best-First algorithm finds a shorter path faster than the Steepest Ascent and Depth-First algorithms, but not the shortest path. We expected this because the Best-First algorithm is similar to the Steepest Ascent algorithm, except it uses a slightly better ordering of the nodes.
+	Algorithm A, unsurprisingly, finds the best path; however, it isn't as fast as Best-First or Steepest Ascent. This makes sense, because Algorithm A is basically a more informed Breadth-First search, while the other algorithms we tested are closer to Depth-First. This means that it is guaranteed to find the shortest path, but it has to look at more nodes. 
