@@ -5,5 +5,5 @@ Problem 2a:
 	Unsurprisingly, the Depth-First algorithm finds a path, but it isn't the shortest.
 	The Hill-Climbing algorithm doesn't do anything, as expected, because both nodes adjacent to the start square are further from the goal according to our straight line distance H function.
 	The Steepest Ascent Hill Climbing algorithm finds a path faster than any other algorithm, but it isn't the shortest one, which makes sense since it's basically Depth-First, but it looks at the nodes in a slightly more informed order.
-	The Best-First algorithm finds the shortest path faster than Algorithm A. This is not surprising given that there are only two acyclic paths.
+	The Best-First algorithm finds the shortest path faster than Algorithm A. This is not surprising given that there are only three acyclic paths.
 	Algorithm A, unsurprisingly, finds the best path; however, it isn't as fast as Best-First or Steepest Ascent. This makes sense, because Algorithm A is basically a more informed Breadth-First search, while the other algorithms we tested are closer to Depth-First. This means that it is guaranteed to find the shortest path, but it has to look at more nodes. 
