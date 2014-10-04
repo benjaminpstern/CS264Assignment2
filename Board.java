@@ -1,21 +1,38 @@
 public class Board {
     // I modeled player as an enum. If you don't know how to use enums, you can used integers 0 and 1 for Min and Max
     // If you use an enum you will also be interested in EnumMap
-        public static enum Player{MAX, MIN ...};
-	
+	public Pot[][] pots;
+	public Pot[] kalahs;
 	public Board(int n) {
 	    // Constructs a board with n stones per pot
+		kalahs = new Pot[2];
+		pots = new Pot[2][6];
+		for(int player = 0;player<2;player++){
+			kalahs[player] = 0;
+			for(int pot = 0;pot<6;pot++){
+				pots[player][pot] = n;
+			}
+		}
 	}	
 	
 	public Board(Board b) {
 	    // Constructs a board that is a copy of Board b
+		kalahs = new Pot[2];
+		pots = new Pot[2][6];
+		for(int player = 0;player<2;player++){
+			kalahs[player] = b.kalahs[player];
+			for(int pot = 0;pot<6;pot++){
+				pots[player][pot] = b.pots[player][pot];
+			}
+		}
 	}
 	
     // ...
 
-	public Board move(Player player, int pot) {
+	public Board move(int player, int pot) {
     //  Returns a new Board whose state is that of the Kalah board after Player player
     //      moves using the given pot	    
+		
 	}
 	
 	@Override
@@ -29,11 +46,13 @@ public class Board {
     //  A final configuration is one where all pots on one side are empty.
 	}
 	
-	public boolean legal(Player player, int pot) {
+	public boolean legal(int player, int pot) {
     //  Returns true if the move indicated by the given pot is legal (false otherwise)
+		if(pot < 0 || pot > 5)	return false;
+		return pots[player][pot] != 0;	
 	}
 	
-	public boolean moveBoard(Player player, int pot) {
+	public boolean moveBoard(int player, int pot) {
     //  Performs the move indicated by the given pot on this Board for Player player. 
     //  Includes any capture or final actions if the resulting configuration is a final configuration.
     //  Returns true if the result is a free turn for the player (false otherwise)

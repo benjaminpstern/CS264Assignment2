@@ -2,13 +2,13 @@
 public class Kalah {
 	public final static int DEPTH = 5;
 
-        public static Integer[] minimax(Board startboard, int depth, Player player) {
+        public static Integer[] minimax(Board startboard, int depth, int player) {
 	    //	Performs the minimax procedure by initializing alpha and beta and calling
 	    //  minimax(startboard, depth, player, alpha, beta)
 	    //  For a description of the Player class see Board.java
 	}
 
-        public static Integer[] minimax(Board startboard, int depth, Player player, int alpha, int beta) {
+        public static Integer[] minimax(Board startboard, int depth, int player, int alpha, int beta) {
 	    //  Performs the minimax procedure with cutoff values alpha and beta
 	    //  Essentially a translation of the Python function shown in class
 	}
