@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.InputMismatchException;
 public class Kalah {
     public final static int DEPTH = 5;
     public final static int INFINITY = 100;
@@ -58,7 +57,7 @@ public class Kalah {
 	//  Performs the minimax procedure with cutoff values alpha and beta
 	//  Essentially a translation of the Python function shown in class
 	int player = 1;
-	if(depth == 0) return startboard.eval();
+	if(depth <= 0 || startboard.isOver()) return startboard.eval();
 	int[] moves = new int[6];
 	for(int p = 0;p<6;p++){
 	    if(startboard.legal(player,p)){
@@ -83,7 +82,7 @@ public class Kalah {
 	//  Performs the minimax procedure with cutoff values alpha and beta
 	//  Essentially a translation of the Python function shown in class
 	int player = 0;
-	if(depth == 0) return startboard.eval();
+	if(depth <= 0 || startboard.isOver()) return startboard.eval();
 	int[] moves = new int[6];
 	for(int p = 0;p<6;p++){
 	    if(startboard.legal(player,p)){
@@ -129,16 +128,65 @@ public class Kalah {
 	int player = -43;
 	while(player!=0 && player!=1){
 	    try{
-		player = s.nextInt();
+		player = Integer.parseInt(s.next());
 	    }
-	    catch(InputMismatchException e){
+	    catch(NumberFormatException e){
 		;
 	    }
 	    if(player!=0 && player != 1){
 		System.out.println("Please type 1 to go first or 0 to go second.");
 	    }
 	}
-	System.out.println(player);
+	if (player == 1) {
+	    System.out.println("Ok, you go first");
+	}
+	else if (player == 0) {
+	    System.out.println("Ok, I go first");
+	}
+	System.out.println("Initial Board");
+	Board b = new Board(4);
+	System.out.println(b);	
+
+	boolean goAgain = false;
+	while (!b.isOver()) {
+	    if (player == 0) {
+		int p = minimax(b, depth, 0);
+		System.out.println("My turn ... hmm ...\nI choose " + p);
+		goAgain = b.moveBoard(0, p);
+	    }
+	    else {
+		System.out.print("Your turn ... Move? (0-5)? ");
+		int move = -42;
+		while (!b.legal(1,move)) {
+		    try{
+			move = Integer.parseInt(s.next());
+		    }
+		    catch(NumberFormatException e){
+			;
+		    }
+		    if(!b.legal(1,move)){
+			System.out.println("Please enter a valid move (0-5) ");
+		    }
+		}
+		goAgain = b.moveBoard(1,move);
+	    }
+	    if (!goAgain) {
+		player = (player + 1) % 2;
+	    }
+	    else {
+		goAgain = false;
+	    }
+	    System.out.println(b);	
+	}
+	if (b.kalahs[0] > b.kalahs[1]) {
+	    System.out.println("Haha ... I win!\nBetter luck next time!");
+	}
+	else if (b.kalahs[1] > b.kalahs[0]) {
+	    System.out.println("Shoot! You beat me!\nYou're too good!\nI'll have to try harder next time!");
+	}
+	else {
+	    System.out.println("Wow! A tie!\n Good Job!");
+	}
     }
 
     public static void main(String[] args) {
