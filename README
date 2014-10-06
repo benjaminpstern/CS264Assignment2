@@ -2,3 +2,16 @@ CS264Assignment2
 ================
 
 Artificial Intelligence Assignment 2
+
+Cole Peppis and Ben Stern
+
+We have adhered to the Honor Code in this assignment.
+
+Design decisions we want you to know about:
+    In our Kalah.java, we structured our minimax proceedure as two functions,
+mini and maxi in order to make it flow more intuitively for us. We used this to
+our advantage when modelling the go again mechanic. When a player gets a free
+turn mini or maxi simply calls itself again with the same depth in order to
+avoid incorrectly evaluating a node. It doesn't make sense to us to stop in the
+middle of a turn and evaluate the board. This is sound because turns are always
+finite so our algorithm will never loop forever. 
